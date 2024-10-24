@@ -87,6 +87,16 @@ if (query.toLowerCase().includes("plus")) {
   }
 }
 
+if (query.toLowerCase().includes("to the power of")) {
+  const numbers = query.match(/(\d+)/g);  // Extract numbers from the query
+  if (numbers && numbers.length === 2) {
+    const base = parseInt(numbers[0]);
+    const exponent = parseInt(numbers[1]);
+    const result = Math.pow(base, exponent);
+    return `${result}`;  // Return the result of the exponentiation as a string
+  }
+}
+
   return "";
 }
 
