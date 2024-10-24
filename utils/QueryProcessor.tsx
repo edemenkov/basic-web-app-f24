@@ -117,6 +117,25 @@ if (query.toLowerCase().includes("plus") && query.toLowerCase().includes("multip
   }
 }
 
+if (query.toLowerCase().includes("which of the following is an anagram of")) {
+  const targetWordMatch = query.match(/an anagram of (\w+)/);
+  const wordListMatch = query.match(/: (.+)/);
+
+  if (targetWordMatch && wordListMatch) {
+      const targetWord = targetWordMatch[1].toLowerCase();
+      const wordList = wordListMatch[1].split(',').map(word => word.trim().toLowerCase());
+
+      const isAnagram = (word1: string, word2: string) => {
+          const sorted1 = word1.split('').sort().join('');
+          const sorted2 = word2.split('').sort().join('');
+          return sorted1 === sorted2;
+      };
+
+      const anagrams = wordList.filter(word => isAnagram(targetWord, word));
+      return anagrams.join(", ");  // Return the anagram(s) as a comma-separated string
+  }
+}
+
 
   return "";
 }
