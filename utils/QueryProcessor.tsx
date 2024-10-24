@@ -34,7 +34,14 @@ export default function QueryProcessor(query: string): string {
       return `${largest}`;  // Return just the largest number as a string
     }
   }
-
+  
+  if (query.toLowerCase().includes("multiplied by")) {
+    const numbers = query.match(/(\d+)/g);  // Extract numbers from the query
+    if (numbers && numbers.length === 2) {
+      const result = parseInt(numbers[0]) * parseInt(numbers[1]);
+      return `${result}`;  // Return just the multiplication result as a string
+    }
+  }
 
   return "";
 }
