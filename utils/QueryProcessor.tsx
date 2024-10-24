@@ -79,6 +79,13 @@ if (query.toLowerCase().includes("minus")) {
   }
 }
 
+if (query.toLowerCase().includes("plus")) {
+  const numbers = query.match(/(\d+)/g);  // Extract numbers from the query
+  if (numbers && numbers.length > 1) {
+    const result = numbers.reduce((sum, num) => sum + parseInt(num), 0);
+    return `${result}`;  // Return the sum result as a string
+  }
+}
 
   return "";
 }
