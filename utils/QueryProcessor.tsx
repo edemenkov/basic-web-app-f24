@@ -71,6 +71,15 @@ if (query.toLowerCase().includes("which of the following numbers are primes")) {
   }
 }
 
+if (query.toLowerCase().includes("minus")) {
+  const numbers = query.match(/(\d+)/g);  // Extract numbers from the query
+  if (numbers && numbers.length === 2) {
+    const result = parseInt(numbers[0]) - parseInt(numbers[1]);
+    return `${result}`;  // Return just the subtraction result as a string
+  }
+}
+
+
   return "";
 }
 
