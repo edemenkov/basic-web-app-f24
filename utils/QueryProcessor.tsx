@@ -34,7 +34,7 @@ export default function QueryProcessor(query: string): string {
       return `${largest}`;  // Return just the largest number as a string
     }
   }
-  
+
   if (query.toLowerCase().includes("multiplied by")) {
     const numbers = query.match(/(\d+)/g);  // Extract numbers from the query
     if (numbers && numbers.length === 2) {
@@ -42,6 +42,19 @@ export default function QueryProcessor(query: string): string {
       return `${result}`;  // Return just the multiplication result as a string
     }
   }
+
+  if (query.toLowerCase().includes("which of the following numbers is both a square and a cube")) {
+    const numbers = query.match(/(\d+)/g);  // Extract numbers from the query
+    if (numbers) {
+      const isSquareAndCube = (num: number) => {
+        const sqrt = Math.sqrt(num);
+        const cbrt = Math.cbrt(num);
+        return Number.isInteger(sqrt) && Number.isInteger(cbrt);
+      };
+      const results = numbers.filter(num => isSquareAndCube(parseInt(num)));
+      return results.join(", ");  // Return the matching numbers, if any, as a comma-separated string
+    }
+}
 
   return "";
 }
