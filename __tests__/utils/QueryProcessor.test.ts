@@ -18,12 +18,16 @@ describe("QueryProcessor", () => {
           ));
     });
 
-    // TODO: You should update the test below after you add your andrew id
-    test('should return my andrew id', () => {
-        const query = "what's your Andrew ID?";
+    // Modify this block to include the required prefix
+    test('should return my andrew id with prefix', () => {
+        const query = "what's your AndrewID?";
         const response: string = QueryProcessor(query);
-        expect(response).toBe((
-            "edemenko"
-          ));
+        expect(response).toBe("andrewID: edemenko");
+    });
+
+    test('should return my name', () => {
+        const query = "What is your name?";
+        const response: string = QueryProcessor(query);
+        expect(response).toBe("Kate");
     });
 });
