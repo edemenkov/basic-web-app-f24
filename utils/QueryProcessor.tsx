@@ -18,19 +18,20 @@ export default function QueryProcessor(query: string): string {
   }
 
 
-  if (query.includes("plus")) {
-    const numbers = query.match(/(\d+)/g);
+  if (query.toLowerCase().includes("plus")) {
+    const numbers = query.match(/(\d+)/g);  // Extract numbers from the query
     if (numbers && numbers.length === 2) {
       const result = parseInt(numbers[0]) + parseInt(numbers[1]);
-      return `The result is ${result}`;
+      return `${result}`;  // Return just the number as a string
     }
   }
 
+  // Handle largest number queries like "Which of the following numbers is the largest: 93, 53, 50?"
   if (query.toLowerCase().includes("which of the following numbers is the largest")) {
-    const numbers = query.match(/(\d+)/g); 
+    const numbers = query.match(/(\d+)/g);  // Extract numbers from the query
     if (numbers && numbers.length > 1) {
       const largest = Math.max(...numbers.map(num => parseInt(num)));
-      return `The largest number is ${largest}`;
+      return `${largest}`;  // Return just the largest number as a string
     }
   }
 
