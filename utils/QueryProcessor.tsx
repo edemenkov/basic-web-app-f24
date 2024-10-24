@@ -97,6 +97,19 @@ if (query.toLowerCase().includes("to the power of")) {
   }
 }
 
+if (query.toLowerCase().includes("plus") && query.toLowerCase().includes("multiplied by")) {
+  const numbers = query.match(/(\d+)/g);  // Extract numbers from the query
+  if (numbers && numbers.length === 3) {
+    const firstNumber = parseInt(numbers[0]);
+    const secondNumber = parseInt(numbers[1]);
+    const thirdNumber = parseInt(numbers[2]);
+
+    // Perform multiplication first, then addition
+    const result = firstNumber + (secondNumber * thirdNumber);
+    return `${result}`;  // Return the result as a string
+  }
+}
+
   return "";
 }
 
