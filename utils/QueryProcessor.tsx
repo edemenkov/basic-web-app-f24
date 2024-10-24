@@ -12,6 +12,11 @@ export default function QueryProcessor(query: string): string {
     //TODO update the corresponding test case in __tests__
     return ( "edemenko" );
   }
+
+  if (query.toLowerCase().includes("What is your name?")) {
+    return "edemenko-313"; // Return your name for this specific query
+  }
+
   return "";
 }
 
