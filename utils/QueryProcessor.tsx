@@ -56,6 +56,21 @@ export default function QueryProcessor(query: string): string {
     }
 }
 
+if (query.toLowerCase().includes("which of the following numbers are primes")) {
+  const numbers = query.match(/(\d+)/g);  // Extract numbers from the query
+  if (numbers) {
+    const isPrime = (num: number) => {
+      if (num <= 1) return false;  // 0 and 1 are not prime
+      for (let i = 2; i <= Math.sqrt(num); i++) {
+        if (num % i === 0) return false;  // If divisible by any number other than 1 and itself, not prime
+      }
+      return true;
+    };
+    const primes = numbers.filter(num => isPrime(parseInt(num)));
+    return primes.join(", ");  // Return the prime numbers as a comma-separated string
+  }
+}
+
   return "";
 }
 
